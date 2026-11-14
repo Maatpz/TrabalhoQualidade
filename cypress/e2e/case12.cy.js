@@ -1,0 +1,18 @@
+describe('Teste 12: teste de produtos', () => {
+  it('deve adicionar produtos no carrinho com sucesso', () => {
+    cy.visit('http://automationexercise.com')
+    cy.get('body').should('be.visible')
+    cy.contains('a', 'Products').click()
+    cy.get('.product-image-wrapper').eq(0).find('a.add-to-cart').first().click()
+    cy.contains('button', 'Continue Shopping').click()
+    cy.get('.product-image-wrapper').eq(1).find('a.add-to-cart').first().click()
+    cy.contains('a', 'View Cart').click()
+    cy.get('#product-1').should('be.visible')
+    cy.get('#product-2').should('be.visible')
+    cy.get('.cart_price p').should('contain', 'Rs. 500')
+    cy.get('.cart_price p').should('contain', 'Rs. 400')
+    cy.get('.cart_quantity button').should('contain', '1')
+    cy.get('.cart_total p').should('contain', 'Rs. 500')
+    cy.get('.cart_total p').should('contain', 'Rs. 400')
+  })
+})

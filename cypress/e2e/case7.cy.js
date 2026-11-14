@@ -5,6 +5,5 @@ describe('Teste 7', () => {
         cy.get('body').should('be.visible');
         cy.contains('a', 'Test Cases').click();
         cy.url().should('include', '/test_cases');
-        // cy.contains('b', 'Test Cases').should('be.visible');
     });
 });
